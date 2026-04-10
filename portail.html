@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captain Pharma — Portail Établissement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; }
+    </style>
+  <script type="module" crossorigin src="/assets/portail-DH78Mz2p.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/flyonui-BVVjUp3S.js">
+  <link rel="stylesheet" crossorigin href="/assets/flyonui-yntpFQRl.css">
+</head>
+<body class="bg-base-200/30 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-cp-900 text-white">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-9 h-9 bg-cp-accent rounded-lg flex items-center justify-center font-bold text-sm">CP</div>
+                <div>
+                    <div class="font-semibold">Captain Pharma</div>
+                    <div class="text-xs text-cp-500">Espace établissement</div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="text-right">
+                    <div class="text-sm font-medium">Résidence du Parc</div>
+                    <div class="text-xs text-cp-500">92000 Nanterre</div>
+                </div>
+                <button class="btn btn-sm bg-transparent border border-white/20 text-white hover:bg-white/10">
+                    Déconnexion
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tabs -->
+    <div class="bg-white border-b border-base-content/10 sticky top-0 z-10">
+        <div class="max-w-5xl mx-auto px-6">
+            <nav class="flex gap-1">
+                <a href="#" class="px-4 py-3 text-sm font-medium text-cp-900 border-b-2 border-cp-accent">Demandes</a>
+                <a href="#" class="px-4 py-3 text-sm font-medium text-base-content/50 hover:text-base-content/70 border-b-2 border-transparent hover:border-base-content/20">Suivi</a>
+                <a href="#" class="px-4 py-3 text-sm font-medium text-base-content/50 hover:text-base-content/70 border-b-2 border-transparent hover:border-base-content/20">Administratif</a>
+                <a href="#" class="px-4 py-3 text-sm font-medium text-base-content/50 hover:text-base-content/70 border-b-2 border-transparent hover:border-base-content/20">Infos utiles</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-5xl mx-auto px-6 py-8">
+
+        <!-- New request form -->
+        <div class="card bg-white border border-base-content/10 shadow-sm mb-8">
+            <div class="card-body p-6">
+                <h2 class="text-lg font-semibold text-cp-900 mb-5">Nouvelle demande</h2>
+
+                <div class="grid grid-cols-2 gap-5 mb-5">
+                    <div>
+                        <label class="block text-base font-medium text-base-content/70 mb-2">Résident</label>
+                        <select class="select w-full">
+                            <option value="">Sélectionner un résident...</option>
+                            <option>DUPONT Simone</option>
+                            <option>GARCIA Louise</option>
+                            <option>LAMBERT André</option>
+                            <option>LEROY Henri</option>
+                            <option>MARTIN Jean</option>
+                            <option>PETIT Lucienne</option>
+                            <option>ROUX Marguerite</option>
+                            <option>THOMAS Yvette</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-base font-medium text-base-content/70 mb-2">Type de demande</label>
+                        <select class="select w-full">
+                            <option value="">Sélectionner...</option>
+                            <option>Nouvelle prescription</option>
+                            <option>Événement indésirable</option>
+                            <option>Commande</option>
+                            <option>Vacances</option>
+                            <option>Autre demande</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <label class="block text-base font-medium text-base-content/70 mb-2">Remarque <span class="font-normal text-base-content/40">(optionnel)</span></label>
+                    <textarea rows="2" placeholder="Précisez votre demande si nécessaire..." class="textarea w-full"></textarea>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-base font-medium text-base-content/70 mb-2">Document à joindre <span class="font-normal text-base-content/40">(optionnel)</span></label>
+                    <button class="btn btn-lg btn-outline w-full gap-3 h-16 text-base">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        Déposer un document (PDF)
+                    </button>
+                    <p class="text-sm text-base-content/40 mt-2">PDF accepté. 10 Mo max.</p>
+                </div>
+
+                <div class="flex justify-end">
+                    <button class="btn text-white shadow-sm" style="background-color: var(--color-cp-accent);">
+                        Envoyer la demande
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secondary actions: 3 buttons in a row -->
+        <div class="grid grid-cols-3 gap-4 mb-8">
+            <button class="card bg-white border border-base-content/10 shadow-sm hover:shadow-md transition-shadow cursor-pointer text-left">
+                <div class="card-body p-5 flex flex-col items-center text-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-cp-100 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-cp-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-base font-semibold text-cp-900">Déposer des prescriptions</p>
+                        <p class="text-sm text-base-content/50 mt-1">Plusieurs résidents en une fois</p>
+                    </div>
+                </div>
+            </button>
+            <button class="card bg-white border border-base-content/10 shadow-sm hover:shadow-md transition-shadow cursor-pointer text-left">
+                <div class="card-body p-5 flex flex-col items-center text-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-cp-100 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-cp-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-base font-semibold text-cp-900">Demander l'ajout d'un résident</p>
+                        <p class="text-sm text-base-content/50 mt-1">Envoyer une demande à Captain Pharma</p>
+                    </div>
+                </div>
+            </button>
+            <button class="card bg-white border border-base-content/10 shadow-sm hover:shadow-md transition-shadow cursor-pointer text-left">
+                <div class="card-body p-5 flex flex-col items-center text-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-cp-100 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-cp-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-base font-semibold text-cp-900">Déclarer des vacances</p>
+                        <p class="text-sm text-base-content/50 mt-1">Prévenir au moins 5 jours avant</p>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+        <!-- Recent requests -->
+        <div>
+            <h2 class="text-lg font-semibold text-cp-900 mb-4">Demandes récentes</h2>
+
+            <div class="card bg-white border border-base-content/10 shadow-sm overflow-hidden">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-base-content/5">
+                            <th class="text-left text-xs font-medium text-base-content/40 uppercase tracking-wider px-5 py-3">Résident</th>
+                            <th class="text-left text-xs font-medium text-base-content/40 uppercase tracking-wider px-5 py-3">Type</th>
+                            <th class="text-left text-xs font-medium text-base-content/40 uppercase tracking-wider px-5 py-3">Date</th>
+                            <th class="text-left text-xs font-medium text-base-content/40 uppercase tracking-wider px-5 py-3">Statut</th>
+                            <th class="text-left text-xs font-medium text-base-content/40 uppercase tracking-wider px-5 py-3">Dernier suivi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-base-content/5">
+                        <tr class="hover:bg-base-200/30 cursor-pointer">
+                            <td class="px-5 py-3.5">
+                                <span class="text-sm font-medium">MARTIN Jean</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="badge badge-soft badge-success badge-xs">Nvelle prescription</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="text-sm text-base-content/50">09/04/2026</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="inline-flex items-center gap-1.5 text-xs font-medium text-cp-700">
+                                    <span class="w-1.5 h-1.5 bg-cp-700 rounded-full animate-pulse"></span>
+                                    En cours
+                                </span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="text-xs text-base-content/40">Pris en charge par Marie D. - 09/04 08:45</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-base-200/30 cursor-pointer">
+                            <td class="px-5 py-3.5">
+                                <span class="text-sm font-medium">LEROY Henri</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="badge badge-soft badge-error badge-xs">Évt indésirable</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="text-sm text-base-content/50">08/04/2026</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-600">
+                                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                    Terminé
+                                </span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="text-xs text-base-content/40">Traité par Olivier B. - 08/04 16:30</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-base-200/30 cursor-pointer">
+                            <td class="px-5 py-3.5">
+                                <span class="text-sm font-medium">PETIT Lucienne</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="badge badge-soft badge-info badge-xs">Commande</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="text-sm text-base-content/50">08/04/2026</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="inline-flex items-center gap-1.5 text-xs font-medium text-cp-700">
+                                    <span class="w-1.5 h-1.5 bg-cp-700 rounded-full animate-pulse"></span>
+                                    En cours
+                                </span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="text-xs text-base-content/40">En facturation - 08/04 15:10</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-base-200/30 cursor-pointer">
+                            <td class="px-5 py-3.5">
+                                <span class="text-sm font-medium">GARCIA Louise</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="badge badge-soft badge-success badge-xs">Nvelle prescription</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="text-sm text-base-content/50">07/04/2026</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-600">
+                                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                    Terminé
+                                </span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="text-xs text-base-content/40">Traité par Sandrine B. - 07/04 14:20</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-base-200/30 cursor-pointer">
+                            <td class="px-5 py-3.5">
+                                <span class="text-sm font-medium">DUPONT Simone</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="badge badge-soft badge-warning badge-xs">Vacances</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="text-sm text-base-content/50">07/04/2026</span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-600">
+                                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                    Terminé
+                                </span>
+                            </td>
+                            <td class="px-5 py-3.5">
+                                <span class="text-xs text-base-content/40">Piluliers prévus du 14/04 au 28/04 - 07/04 11:00</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-4 text-center">
+                <button class="btn btn-link btn-sm text-cp-700">Voir toutes les demandes →</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-base-content/10 mt-12">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+            <p class="text-xs text-base-content/40">Captain Pharma — Hébergement certifié HDS (données de santé)</p>
+            <div class="flex items-center gap-1.5">
+                <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+                <span class="text-xs text-base-content/40">Tous les systèmes opérationnels</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

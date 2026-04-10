@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captain Pharma — Kanban</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .kanban-col { min-width: 280px; max-width: 320px; }
+        .kanban-scroll::-webkit-scrollbar { height: 8px; }
+        .kanban-scroll::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+        .card-hover { transition: box-shadow 0.15s, transform 0.15s; }
+        .card-hover:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-1px); }
+        .wip-bar { height: 3px; border-radius: 2px; }
+    </style>
+  <script type="module" crossorigin src="/assets/kanban-BGDJXNXs.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/flyonui-BVVjUp3S.js">
+  <link rel="stylesheet" crossorigin href="/assets/flyonui-yntpFQRl.css">
+</head>
+<body class="bg-base-200/50 h-screen flex overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-60 bg-cp-900 text-white flex flex-col shrink-0">
+        <div class="p-5 border-b border-white/10">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-cp-accent rounded-lg flex items-center justify-center font-bold text-sm">CP</div>
+                <div>
+                    <div class="font-semibold text-sm">Captain Pharma</div>
+                    <div class="text-xs text-cp-500">Outil de gestion PDA</div>
+                </div>
+            </div>
+        </div>
+        <nav class="flex-1 p-3 space-y-1">
+            <a href="kanban.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-white/10 text-white text-sm font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+                Kanban
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                Pilotage
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+                Dossiers pharma
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                Infos résidents
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                Établissements
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                Templates email
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                Renouvellements
+            </a>
+            <div class="border-t border-white/10 mt-4 pt-4">
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    Administration
+                </a>
+            </div>
+        </nav>
+        <div class="p-4 border-t border-white/10">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-cp-accent flex items-center justify-center">
+                    <span class="text-xs text-white font-medium">MD</span>
+                </div>
+                <div>
+                    <div class="text-sm font-medium">Marie D.</div>
+                    <div class="text-xs text-cp-500">Pharmacienne</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Header -->
+        <header class="bg-white border-b border-base-content/10 px-6 py-3 flex items-center justify-between shrink-0">
+            <div>
+                <h1 class="text-lg font-semibold text-cp-900">Kanban</h1>
+                <div class="flex items-center gap-2 text-xs">
+                    <span class="text-cp-muted">Mercredi 9 avril 2026</span>
+                    <span class="badge badge-error badge-sm text-white">2 urgents</span>
+                    <span class="badge badge-soft badge-info badge-sm">28 en cours</span>
+                    <span class="badge badge-soft badge-error badge-sm">8 en retard (hier)</span>
+                    <span class="text-base-content/30">·</span>
+                    <span class="text-base-content/40">42 terminés</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <button class="btn btn-soft btn-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/></svg>
+                    Trier par nom
+                </button>
+                <div class="relative">
+                    <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-base-content/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <input type="text" placeholder="Rechercher un ticket ou archivé..." class="input input-sm pl-9 w-72">
+                </div>
+                <button class="btn btn-circle btn-ghost btn-sm relative">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                    <span class="badge badge-error badge-xs absolute -top-0.5 -right-0.5 badge-dot"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Kanban board -->
+        <div class="flex-1 overflow-x-auto kanban-scroll p-5 flex gap-4">
+
+            <!-- Column: À trier -->
+            <div class="kanban-col flex-shrink-0 flex flex-col">
+                <div class="mb-3 px-1">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-base-content/30"></div>
+                        <h2 class="font-semibold text-sm">À trier</h2>
+                        <span class="badge badge-soft badge-sm">7</span>
+                    </div>
+                </div>
+                <div class="space-y-2.5 flex-1">
+                    <a href="ticket.html" class="card card-border card-sm bg-white card-hover cursor-pointer block">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-success badge-xs">Nvelle prescription</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Les Music'Aulnes - DUPONT Simone</p>
+                            <p class="text-xs text-base-content/40">09/04 09:15</p>
+                        </div>
+                    </a>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-success badge-xs">FT</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Résidence du Parc - LEROY Henri</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 09:12</p>
+                            <div class="flex items-center gap-2">
+                                <span class="badge badge-soft badge-warning badge-xs">⚠️ Allergie</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-xs">Doc non identifié</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Les Music'Aulnes - MOREAU Jeanne</p>
+                            <p class="text-xs text-base-content/40">09/04 09:08</p>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-info badge-xs">Commande</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Les Tilleuls - GIRARD Paulette</p>
+                            <p class="text-xs text-base-content/40">09/04 09:05</p>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
+                                <span class="badge badge-soft badge-success badge-xs">FT</span>
+                                <span class="badge badge-soft badge-warning badge-xs">STUP</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">La Roseraie - BONNET Raymond</p>
+                            <p class="text-xs text-base-content/40">09/04 08:58</p>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-success badge-xs">Nvelle prescription</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Les Jardins d'Automne - PERRIN Georgette</p>
+                            <p class="text-xs text-base-content/40">09/04 08:52</p>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-accent badge-xs">Ordo à caractériser</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Le Clos Fleuri - LECLERC Madeleine</p>
+                            <p class="text-xs text-base-content/40">09/04 08:45</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column: Pilotage 1 & 2 -->
+            <div class="kanban-col flex-shrink-0 flex flex-col">
+                <div class="mb-3 px-1">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-cp-700"></div>
+                        <h2 class="font-semibold text-sm">Pilotage</h2>
+                        <span class="badge badge-soft badge-info badge-sm">6 du jour</span>
+                        <span class="badge badge-soft badge-warning badge-xs">3 hier</span>
+                    </div>
+                </div>
+                <div class="space-y-2.5 flex-1">
+                    <!-- URGENT -->
+                    <a href="ticket.html" class="card card-border card-sm bg-white card-hover cursor-pointer ring-1 ring-error/30 block border-l-[3px] border-l-error">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
+                                <span class="badge badge-soft badge-success badge-xs">FT</span>
+                                <span class="badge badge-soft badge-error badge-xs">Urgent</span>
+                                <span class="badge badge-soft badge-warning badge-xs">STUP</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Villa Marguerite - MARTIN Jean</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 08:42</p>
+                            <div class="flex items-center gap-2 mb-2.5">
+                                <span class="badge badge-soft badge-warning badge-xs">⚠️ Allergie</span>
+                                <span class="badge badge-soft badge-error badge-xs">💸 Avance frais</span>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-primary h-1.5 flex-1" role="progressbar">
+                                    <div class="progress-bar" style="width: 62%"></div>
+                                </div>
+                                <span class="text-[10px] text-base-content/40 font-medium">5/8</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-cp-accent inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Marie D.</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- URGENT 2 -->
+                    <a href="ticket.html" class="card card-border card-sm bg-white card-hover cursor-pointer ring-1 ring-error/30 block border-l-[3px] border-l-error">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
+                                <span class="badge badge-soft badge-success badge-xs">FT</span>
+                                <span class="badge badge-soft badge-error badge-xs">Urgent</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Les Tilleuls - FOURNIER Andrée</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 08:38</p>
+                            <div class="flex items-center gap-2 mb-2.5">
+                                <span class="badge badge-soft badge-error badge-xs">💸 Avance frais</span>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-primary h-1.5 flex-1" role="progressbar">
+                                    <div class="progress-bar" style="width: 37%"></div>
+                                </div>
+                                <span class="text-[10px] text-base-content/40 font-medium">3/8</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-purple-500 inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Sandrine B.</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Du jour -->
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-success badge-xs">Nvelle prescription</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Les Music'Aulnes - BERNARD Marcel</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 08:30</p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-primary h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 50%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">3/6</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-cp-accent inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Marie D.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
+                                <span class="badge badge-soft badge-info badge-xs">Commande</span>
+                                <span class="badge badge-soft badge-secondary badge-xs">Contention</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Résidence du Parc - PETIT Lucienne</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 08:15</p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-primary h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 50%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">2/4</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-purple-500 inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Sandrine B.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-success badge-xs">FT</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">La Roseraie - MERCIER Yvonne</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 08:05</p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-primary h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 75%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">6/8</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-rose-400 inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Julie P.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-success badge-xs">Nvelle prescription</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Les Jardins d'Automne - BRUNET Gisèle</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 07:50</p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-primary h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 16%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">1/6</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-cp-accent inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Marie D.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === Séparateur non urgent === -->
+                    <div class="my-2 mx-1 py-2 px-3 rounded-md bg-base-200/60 border border-base-content/5">
+                        <div class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-base-content/20"></div>
+                            <span class="text-[10px] font-semibold text-base-content/40 uppercase tracking-wider">Non urgent</span>
+                        </div>
+                    </div>
+
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-error badge-xs">Évt indésirable</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Le Clos Fleuri - DURAND Robert</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 07:55</p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 0%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">0/5</span>
+                            </div>
+                            <button class="flex items-center gap-1.5 text-xs text-base-content/30 hover:text-cp-700 transition-colors">
+                                <div class="w-6 h-6 rounded-full border-2 border-dashed border-base-content/20 flex items-center justify-center">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                                </div>
+                                <span>Prendre en charge</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
+                                <span class="badge badge-soft badge-accent badge-xs">Ordo à caractériser</span>
+                                <span class="badge badge-soft badge-warning badge-xs">Attention remarque</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Villa Marguerite - ROUX Marguerite</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 07:40</p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-primary h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 33%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">1/3</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-cp-accent inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Marie D.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-success badge-xs">FT</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Résidence du Parc - LEGRAND Fernand</p>
+                            <p class="text-xs text-base-content/40 mb-2">08/04 17:10 <span class="badge badge-soft badge-xs badge-warning ml-1">Hier</span></p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-primary h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 25%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">2/8</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-rose-400 inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Julie P.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-info badge-xs">Commande</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Les Tilleuls - CHEVALIER Denise</p>
+                            <p class="text-xs text-base-content/40 mb-2">08/04 16:30 <span class="badge badge-soft badge-xs badge-warning ml-1">Hier</span></p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-primary h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 50%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">2/4</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-purple-500 inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Sandrine B.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
+                                <span class="badge badge-soft badge-success badge-xs">Nvelle prescription</span>
+                                <span class="badge badge-soft badge-warning badge-xs">⚠️ Allergie</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">La Roseraie - CLEMENT Lucien</p>
+                            <p class="text-xs text-base-content/40 mb-2">08/04 15:55 <span class="badge badge-soft badge-xs badge-warning ml-1">Hier</span></p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-primary h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 66%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">4/6</span>
+                            </div>
+                            <button class="flex items-center gap-1.5 text-xs text-base-content/30 hover:text-cp-700 transition-colors">
+                                <div class="w-6 h-6 rounded-full border-2 border-dashed border-base-content/20 flex items-center justify-center">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                                </div>
+                                <span>Prendre en charge</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column: Facturation 1 & 2 -->
+            <div class="kanban-col flex-shrink-0 flex flex-col">
+                <div class="mb-3 px-1">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+                        <h2 class="font-semibold text-sm">Facturation</h2>
+                        <span class="badge badge-soft badge-info badge-sm">5 du jour</span>
+                        <span class="badge badge-soft badge-warning badge-xs">3 hier</span>
+                    </div>
+                </div>
+                <div class="space-y-2.5 flex-1">
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5"><span class="badge badge-soft badge-success badge-xs">FT</span></div>
+                            <p class="text-sm font-medium mb-0.5">Les Music'Aulnes - THOMAS Yvette</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 07:30</p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-success h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 86%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">6/7</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-rose-400 inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Julie P.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5"><span class="badge badge-soft badge-success badge-xs">FT</span></div>
+                            <p class="text-sm font-medium mb-0.5">Les Jardins d'Automne - ARNAUD Thérèse</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 07:15</p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-success h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 100%"></div></div>
+                                <span class="text-[10px] text-success font-medium">7/7 ✓</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-cp-accent inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Marie D.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5"><span class="badge badge-soft badge-info badge-xs">Commande</span></div>
+                            <p class="text-sm font-medium mb-0.5">Villa Marguerite - LAMBERT André</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 07:00</p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-success h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 60%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">3/5</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-rose-400 inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Julie P.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
+                                <span class="badge badge-soft badge-success badge-xs">Nvelle prescription</span>
+                                <span class="badge badge-soft badge-warning badge-xs">STUP</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Le Clos Fleuri - HENRY Jacques</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 06:50</p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-success h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 83%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">5/6</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-purple-500 inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Sandrine B.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5"><span class="badge badge-soft badge-success badge-xs">FT</span></div>
+                            <p class="text-sm font-medium mb-0.5">Les Tilleuls - BLANC Odette</p>
+                            <p class="text-xs text-base-content/40 mb-2">09/04 06:40</p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-success h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 71%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">5/7</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-rose-400 inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Julie P.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === Séparateur contrôle === -->
+                    <div class="my-2 mx-1 py-2 px-3 rounded-md bg-base-200/60 border border-base-content/5">
+                        <div class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-base-content/20"></div>
+                            <span class="text-[10px] font-semibold text-base-content/40 uppercase tracking-wider">Contrôle</span>
+                        </div>
+                    </div>
+
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5"><span class="badge badge-soft badge-success badge-xs">Nvelle prescription</span></div>
+                            <p class="text-sm font-medium mb-0.5">Résidence du Parc - GARCIA Louise</p>
+                            <p class="text-xs text-base-content/40 mb-2">08/04 16:45 <span class="badge badge-soft badge-xs badge-warning ml-1">Hier</span></p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-success h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 67%"></div></div>
+                                <span class="text-[10px] text-base-content/40 font-medium">4/6</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-purple-500 inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Sandrine B.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer opacity-60">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-success badge-xs">FT</span>
+                                <span class="badge badge-success badge-xs">✓</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">Le Clos Fleuri - MARTINEZ Paul</p>
+                            <p class="text-xs text-base-content/40 mb-2">08/04 16:10 <span class="badge badge-soft badge-xs badge-warning ml-1">Hier</span></p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-success h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 100%"></div></div>
+                                <span class="text-[10px] text-success font-medium">5/5 ✓</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-rose-400 inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Julie P.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer opacity-60">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <span class="badge badge-soft badge-info badge-xs">Commande</span>
+                                <span class="badge badge-success badge-xs">✓</span>
+                            </div>
+                            <p class="text-sm font-medium mb-0.5">La Roseraie - MORIN Germaine</p>
+                            <p class="text-xs text-base-content/40 mb-2">08/04 15:40 <span class="badge badge-soft badge-xs badge-warning ml-1">Hier</span></p>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="progress progress-success h-1.5 flex-1" role="progressbar"><div class="progress-bar" style="width: 100%"></div></div>
+                                <span class="text-[10px] text-success font-medium">5/5 ✓</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-cp-accent inline-block shrink-0"></span>
+                                <span class="text-xs text-base-content/50">Marie D.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column: NPD & cueillettes -->
+            <div class="kanban-col flex-shrink-0 flex flex-col">
+                <div class="mb-3 px-1">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-cp-accent"></div>
+                        <h2 class="font-semibold text-sm">NPD & cueillettes</h2>
+                        <span class="badge badge-soft badge-info badge-sm">3 du jour</span>
+                        <span class="badge badge-soft badge-warning badge-xs">2 hier</span>
+                    </div>
+                </div>
+                <div class="space-y-2.5 flex-1">
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5"><span class="badge badge-soft badge-warning badge-xs">NPD liste reçue</span></div>
+                            <p class="text-sm font-medium mb-0.5">Les Music'Aulnes - DUVAL Maurice</p>
+                            <p class="text-xs text-base-content/40">09/04 08:00</p>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5"><span class="badge badge-soft badge-warning badge-xs">Cueillette à préparer</span></div>
+                            <p class="text-sm font-medium mb-0.5">Les Tilleuls - 4 résidents</p>
+                            <p class="text-xs text-base-content/40">09/04 07:45</p>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5"><span class="badge badge-soft badge-warning badge-xs">NPD liste reçue</span></div>
+                            <p class="text-sm font-medium mb-0.5">La Roseraie - OLIVIER Renée</p>
+                            <p class="text-xs text-base-content/40">09/04 07:30</p>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5"><span class="badge badge-soft badge-warning badge-xs">Demande liste NPD</span></div>
+                            <p class="text-sm font-medium mb-0.5">Villa Marguerite - SIMON Colette</p>
+                            <p class="text-xs text-base-content/40">08/04 15:30 <span class="badge badge-soft badge-xs badge-warning ml-1">Hier</span></p>
+                        </div>
+                    </div>
+                    <div class="card card-border card-sm bg-white card-hover cursor-pointer">
+                        <div class="card-body p-3.5">
+                            <div class="flex items-center gap-1.5 mb-1.5"><span class="badge badge-soft badge-warning badge-xs">Cueillette à préparer</span></div>
+                            <p class="text-sm font-medium mb-0.5">Les Jardins d'Automne - 6 résidents</p>
+                            <p class="text-xs text-base-content/40">08/04 14:50 <span class="badge badge-soft badge-xs badge-warning ml-1">Hier</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column: Terminé (collapsed) -->
+            <div class="kanban-col flex-shrink-0 flex flex-col">
+                <div class="mb-3 px-1">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-base-content/20"></div>
+                        <h2 class="font-semibold text-sm text-base-content/40">Terminé</h2>
+                        <span class="badge badge-soft badge-sm">42 aujourd'hui</span>
+                        <button class="text-base-content/30 hover:text-base-content/50">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Collapsed: 5 most recent, faded -->
+                <div class="space-y-1.5 flex-1 opacity-40">
+                    <div class="px-3 py-2 rounded-lg bg-white border border-base-content/5">
+                        <p class="text-xs text-base-content/60">Résidence du Parc - FAURE Odette</p>
+                        <p class="text-[10px] text-base-content/30">09/04 — Commande</p>
+                    </div>
+                    <div class="px-3 py-2 rounded-lg bg-white border border-base-content/5">
+                        <p class="text-xs text-base-content/60">Le Clos Fleuri - ROBIN Georges</p>
+                        <p class="text-[10px] text-base-content/30">09/04 — FT</p>
+                    </div>
+                    <div class="px-3 py-2 rounded-lg bg-white border border-base-content/5">
+                        <p class="text-xs text-base-content/60">Villa Marguerite - MOREL Suzanne</p>
+                        <p class="text-[10px] text-base-content/30">09/04 — Nvelle prescription</p>
+                    </div>
+                    <div class="px-3 py-2 rounded-lg bg-white border border-base-content/5">
+                        <p class="text-xs text-base-content/60">Les Tilleuls - VASSEUR Pierre</p>
+                        <p class="text-[10px] text-base-content/30">09/04 — FT</p>
+                    </div>
+                    <div class="px-3 py-2 rounded-lg bg-white border border-base-content/5">
+                        <p class="text-xs text-base-content/60">La Roseraie - NICOLAS Berthe</p>
+                        <p class="text-[10px] text-base-content/30">09/04 — Commande</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

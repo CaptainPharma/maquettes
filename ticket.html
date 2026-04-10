@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captain Pharma — Ticket ouvert</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; }
+    </style>
+  <script type="module" crossorigin src="/assets/ticket-B4l_0oMp.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/flyonui-BVVjUp3S.js">
+  <link rel="stylesheet" crossorigin href="/assets/flyonui-yntpFQRl.css">
+</head>
+<body class="bg-base-200/50 h-screen flex overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-60 bg-cp-900 text-white flex flex-col shrink-0">
+        <div class="p-5 border-b border-white/10">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-cp-accent rounded-lg flex items-center justify-center font-bold text-sm">CP</div>
+                <div>
+                    <div class="font-semibold text-sm">Captain Pharma</div>
+                    <div class="text-xs text-cp-500">Outil de gestion PDA</div>
+                </div>
+            </div>
+        </div>
+        <nav class="flex-1 p-3 space-y-1">
+            <a href="kanban.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+                Kanban
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                Pilotage
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+                Dossiers pharma
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                Infos résidents
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                Établissements
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                Templates email
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                Renouvellements
+            </a>
+            <div class="border-t border-white/10 mt-4 pt-4">
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/70 hover:bg-white/5 text-sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    Administration
+                </a>
+            </div>
+        </nav>
+        <div class="p-4 border-t border-white/10">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-cp-accent flex items-center justify-center">
+                    <span class="text-xs text-white font-medium">MD</span>
+                </div>
+                <div>
+                    <div class="text-sm font-medium">Marie D.</div>
+                    <div class="text-xs text-cp-500">Pharmacienne</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+
+        <!-- Header -->
+        <header class="bg-white border-b border-base-content/10 px-6 py-3 flex items-center justify-between shrink-0">
+            <div class="flex items-center gap-3">
+                <a href="kanban.html" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-base-200 text-base-content/50 hover:text-base-content/70 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </a>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="text-base font-bold text-cp-900">Villa Marguerite - MARTIN Jean</h1>
+                        <span class="badge badge-soft badge-success badge-xs">FT</span>
+                        <span class="badge badge-soft badge-error badge-xs">Urgent</span>
+                        <span class="badge badge-soft badge-warning badge-xs">STUP</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-base-content/40">
+                        <span>Pilotage</span>
+                        <span class="text-base-content/20">·</span>
+                        <span>09/04 08:42</span>
+                        <span class="text-base-content/20">·</span>
+                        <span>Auto (Netsoins)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="flex items-center gap-1.5 mr-3">
+                    <span class="w-2 h-2 rounded-full bg-cp-accent inline-block shrink-0"></span>
+                    <span class="text-xs text-base-content/50">Marie D.</span>
+                </div>
+                <button class="text-xs text-base-content/40 hover:text-base-content/60 px-2 py-1 rounded hover:bg-base-200 transition-colors">Archiver</button>
+                <button class="text-xs text-base-content/60 px-3 py-1 rounded-lg bg-white border border-base-content/15 hover:border-cp-500 hover:text-cp-700 transition-colors">Retourner au tri</button>
+            </div>
+        </header>
+
+        <!-- Alertes -->
+        <div class="bg-amber-50/80 border-b border-amber-100 px-6 py-2 flex items-center gap-6">
+            <div class="flex items-center gap-2 text-xs">
+                <span class="text-amber-500">⚠️</span>
+                <span class="font-medium text-amber-800">Allergie :</span>
+                <span class="text-amber-700">Pénicilline, Amoxicilline</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+                <span class="text-red-500">💸</span>
+                <span class="font-medium text-red-800">Avance frais :</span>
+                <span class="text-red-700">Interdite (refus famille)</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+                <span class="text-amber-600">⛔</span>
+                <span class="text-amber-800">Différé interdit - contacter avant tout changement</span>
+            </div>
+        </div>
+
+        <!-- 2-column layout -->
+        <div class="flex-1 flex overflow-hidden">
+
+            <!-- LEFT: action + suivi (le travail) -->
+            <div class="flex-1 overflow-y-auto p-6">
+
+                <!-- P0: ACTION COURANTE -->
+                <div class="mb-5 p-4 rounded-xl bg-cp-100/60 border border-cp-200">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-[10px] font-semibold text-cp-700 uppercase tracking-wider">Étape en cours</span>
+                        <span class="text-[10px] text-base-content/30">6 sur 8</span>
+                    </div>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="checkbox" class="checkbox checkbox-primary">
+                        <span class="text-base font-semibold text-cp-900">Valider la FT (pharmacien)</span>
+                    </label>
+                </div>
+
+                <!-- CHECKLIST complète (collapsed, juste la progression) -->
+                <details class="mb-6 group">
+                    <summary class="flex items-center justify-between cursor-pointer select-none py-2 px-3 rounded-lg hover:bg-base-200/50">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-base-content/30 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            <span class="text-xs font-medium text-base-content/50">Checklist FT</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="progress progress-primary h-1.5 w-20" role="progressbar">
+                                <div class="progress-bar" style="width: 62%"></div>
+                            </div>
+                            <span class="text-[10px] text-base-content/40 font-medium">5/8</span>
+                        </div>
+                    </summary>
+                    <div class="mt-1 ml-5 space-y-0.5">
+                        <label class="flex items-center gap-2.5 px-2 py-1 rounded cursor-pointer">
+                            <input type="checkbox" checked disabled class="checkbox checkbox-primary checkbox-xs">
+                            <span class="text-xs text-base-content/35 line-through">Comparer ancienne et nouvelle FT</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 px-2 py-1 rounded cursor-pointer">
+                            <input type="checkbox" checked disabled class="checkbox checkbox-primary checkbox-xs">
+                            <span class="text-xs text-base-content/35 line-through">Vérifier posologies modifiées</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 px-2 py-1 rounded cursor-pointer">
+                            <input type="checkbox" checked disabled class="checkbox checkbox-primary checkbox-xs">
+                            <span class="text-xs text-base-content/35 line-through">Mettre à jour le dossier pharma</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 px-2 py-1 rounded cursor-pointer">
+                            <input type="checkbox" checked disabled class="checkbox checkbox-primary checkbox-xs">
+                            <span class="text-xs text-base-content/35 line-through">Déplacer anciennes ordo</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 px-2 py-1 rounded cursor-pointer">
+                            <input type="checkbox" checked disabled class="checkbox checkbox-primary checkbox-xs">
+                            <span class="text-xs text-base-content/35 line-through">Vérifier interactions médicamenteuses</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 px-2 py-1 rounded bg-cp-100/40">
+                            <input type="checkbox" disabled class="checkbox checkbox-primary checkbox-xs">
+                            <span class="text-xs font-medium text-cp-900">Valider la FT (pharmacien)</span>
+                        </label>
+                        <div class="flex gap-2 mt-2 ml-5">
+                            <button class="btn btn-primary btn-xs flex-1 gap-1">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                                Factu 1 (expédition du jour)
+                            </button>
+                            <button class="flex-1 flex items-center justify-center gap-1 text-xs px-2 py-1 rounded-lg bg-white border border-base-content/15 text-base-content/50 hover:border-cp-500 hover:text-cp-700 transition-colors">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                                Factu 2 (fin de journée)
+                            </button>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Suivi (tabs) -->
+                <div>
+                    <div class="flex items-center gap-4 border-b border-base-content/10 mb-4">
+                        <button class="text-sm font-semibold text-cp-700 border-b-2 border-cp-700 pb-2.5 -mb-px">Suivi public</button>
+                        <button class="text-sm font-medium text-base-content/40 pb-2.5 -mb-px hover:text-base-content/60">Interne <span class="badge badge-xs badge-soft badge-warning">2</span></button>
+                    </div>
+                    <div class="space-y-3 pl-4 border-l-2 border-cp-200">
+                        <div>
+                            <span class="text-[10px] text-base-content/40 font-medium">09/04 08:45</span>
+                            <p class="text-sm text-base-content/70">Pris en charge par <span class="font-medium text-base-content/90">Marie D.</span></p>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-base-content/40 font-medium">09/04 09:02</span>
+                            <p class="text-sm text-base-content/70">Modification FT confirmée, nouvelle posologie Doliprane 1g x3/j</p>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-base-content/40 font-medium">09/04 09:25</span>
+                            <p class="text-sm text-base-content/70">Posologie STUP validée par <span class="font-medium text-base-content/90">Olivier B.</span> (confirmation prescripteur)</p>
+                        </div>
+                    </div>
+                    <!-- Message input -->
+                    <div class="mt-4 flex gap-2">
+                        <input type="text" placeholder="Ajouter un suivi public..." class="input input-sm flex-1">
+                        <button class="btn btn-primary btn-sm btn-square">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: contexte + raccourcis (sidebar info) -->
+            <div class="w-72 border-l border-base-content/10 bg-base-200/30 overflow-y-auto p-5 space-y-5 shrink-0">
+
+                <!-- Raccourcis -->
+                <div>
+                    <h3 class="text-[10px] font-semibold text-base-content/40 uppercase tracking-wider mb-2">Raccourcis</h3>
+                    <div class="grid grid-cols-3 gap-1.5">
+                        <button class="flex flex-col items-center gap-1 py-2 px-1 rounded-lg bg-white border border-base-content/10 hover:border-cp-500 hover:text-cp-700 text-base-content/50 transition-colors cursor-pointer">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+                            <span class="text-[9px]">Dossier</span>
+                        </button>
+                        <button class="flex flex-col items-center gap-1 py-2 px-1 rounded-lg bg-white border border-base-content/10 hover:border-cp-500 hover:text-cp-700 text-base-content/50 transition-colors cursor-pointer">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <span class="text-[9px]">Email</span>
+                        </button>
+                        <button class="flex flex-col items-center gap-1 py-2 px-1 rounded-lg bg-white border border-base-content/10 hover:border-cp-500 hover:text-cp-700 text-base-content/50 transition-colors cursor-pointer">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            <span class="text-[9px]">Template</span>
+                        </button>
+                        <button class="flex flex-col items-center gap-1 py-2 px-1 rounded-lg bg-white border border-base-content/10 hover:border-cp-500 hover:text-cp-700 text-base-content/50 transition-colors cursor-pointer">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                            <span class="text-[9px]">Résident</span>
+                        </button>
+                        <button class="flex flex-col items-center gap-1 py-2 px-1 rounded-lg bg-white border border-base-content/10 hover:border-cp-500 hover:text-cp-700 text-base-content/50 transition-colors cursor-pointer">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                            <span class="text-[9px]">Étab.</span>
+                        </button>
+                        <button class="flex flex-col items-center gap-1 py-2 px-1 rounded-lg bg-white border border-base-content/10 hover:border-cp-500 hover:text-cp-700 text-base-content/50 transition-colors cursor-pointer">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                            <span class="text-[9px]">Pilotage</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contexte -->
+                <div>
+                    <h3 class="text-[10px] font-semibold text-base-content/40 uppercase tracking-wider mb-2">Contexte</h3>
+                    <div class="space-y-2 text-xs">
+                        <div>
+                            <span class="text-base-content/40">Catégorie</span>
+                            <p class="font-medium">FT <button class="text-[10px] text-base-content/30 hover:text-base-content/50 ml-1">Modifier ▾</button></p>
+                        </div>
+                        <div>
+                            <span class="text-base-content/40">Créateur</span>
+                            <p class="text-base-content/60">Auto (extraction Netsoins)</p>
+                        </div>
+                        <div>
+                            <span class="text-base-content/40">Remarque</span>
+                            <p class="text-base-content/60">Renouvellement FT - vérifier posologie STUP</p>
+                        </div>
+                        <div>
+                            <span class="text-base-content/40">Coursier</span>
+                            <p class="text-base-content/60">Oui (mar/jeu)</p>
+                        </div>
+                        <div>
+                            <span class="text-base-content/40">Récup. ordo</span>
+                            <p class="text-base-content/60">Auto Netsoins</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instructions établissement -->
+                <div>
+                    <h3 class="text-[10px] font-semibold text-base-content/40 uppercase tracking-wider mb-2">Instructions étab.</h3>
+                    <div class="bg-blue-50 border border-blue-100 rounded-lg p-3 text-xs">
+                        Livraison uniquement mardi et jeudi avant 14h. Demander Mme Legrand à l'accueil.
+                    </div>
+                </div>
+
+                <!-- Établissement -->
+                <div>
+                    <h3 class="text-[10px] font-semibold text-base-content/40 uppercase tracking-wider mb-2">Établissement</h3>
+                    <div class="text-xs space-y-1">
+                        <p class="font-medium">Villa Marguerite</p>
+                        <p class="text-base-content/50">12 rue des Lilas, 44000 Nantes</p>
+                        <p class="text-base-content/50">Contact : Mme Legrand</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
